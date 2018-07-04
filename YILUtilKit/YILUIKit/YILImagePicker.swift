@@ -74,22 +74,12 @@ func hasCameraAutoration() -> Bool {
         return false
         
     case .denied:
-        let alertController = UIAlertController(title: "无权限访问相机", message: "是否希望重新授权？", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "无权限访问相机", message: "", preferredStyle: .alert)
         // Create the actions.
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        // Create the actions.
-        let okAction = UIAlertAction(title: "取消", style: .default, handler: {(action: UIAlertAction) -> Void in
-            guard let url = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                // Fallback on earlier versions
-            }
-        })
+        let cancelAction = UIAlertAction(title: "好", style: .cancel, handler: nil)
+
         alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
+
         UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
         return false
     case .restricted:
@@ -107,22 +97,11 @@ func hasPhotoAutoration() -> Bool {
         })
         return false
     case .denied:
-        let alertController = UIAlertController(title: "无权限访问相册", message: "是否希望重新授权？", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "无权限访问相册", message: "", preferredStyle: .alert)
         // Create the actions.
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        // Create the actions.
-        let okAction = UIAlertAction(title: "取消", style: .default, handler: {(action: UIAlertAction) -> Void in
-            guard let url = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                // Fallback on earlier versions
-            }
-        })
+        let cancelAction = UIAlertAction(title: "好", style: .cancel, handler: nil)
+
         alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
         UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
         return false
         
