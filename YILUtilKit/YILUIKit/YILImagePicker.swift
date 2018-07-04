@@ -196,14 +196,15 @@ class YILImagePicker: NSObject {
 }
 
 extension YILImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         YILLog.info(info.description)
         bdImagePickerInstance = nil;
         picker.dismiss(animated: true, completion: nil)
         
-        var image = info[UIImagePickerController.InfoKey.editedImage.rawValue];
+        var image = info[.editedImage];
         if image == nil {
-            image = info[UIImagePickerController.InfoKey.originalImage.rawValue];
+            image = info[.originalImage];
         }
 
         

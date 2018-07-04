@@ -104,25 +104,21 @@ public class YILLocationManager: NSObject {
 //            let addressDic = placemark.addressDictionary
             self?.currentLocationLongitude = (Int(location!.coordinate.longitude))
             self?.currentLocationLatitude = (Int(location!.coordinate.latitude))
-            var state = placemark.administrativeArea
-            var cityname = placemark.locality!
+            let state = placemark.administrativeArea
+            let cityname = placemark.locality!
 //            var cityid: String = ""
-            var isChinese = true
-            for character in cityname {
-                if 0x4e00 < character.hashValue && character.hashValue < 0x9fff {
-                    isChinese = true
-                }
-            }
-            if isChinese {
-                
-                state = state?.substring(to: cityname.index(cityname.startIndex, offsetBy: cityname.count - 1))
-                cityname = cityname.substring(to: cityname.index(cityname.startIndex, offsetBy: cityname.count - 1))
-//                cityid = WeatherManager.cityIDOf(cityname)
-            }
-//            HSLog("addressDic: %@", addressDic)
-//            HSLog("cityid: %@", cityid)
-//            HSLog("cityname: %@", cityname)
-//            HSLog("state: %@", state)
+//            let isChinese = true
+//            for character in cityname {
+//                if 0x4e00 < character.hashValue && character.hashValue < 0x9fff {
+//                    isChinese = true
+//                }
+//            }
+//            if isChinese {
+//                let index = state?.index(cityname.startIndex, offsetBy: cityname.count - 1)
+//
+//                state = state?.substring(to: cityname.index(cityname.startIndex, offsetBy: cityname.count - 1))
+//                cityname = cityname.substring(to: cityname.index(cityname.startIndex, offsetBy: cityname.count - 1))
+//            }
             if !(cityname == YILLocationManager.shared.currentLocationCity) {
                 YILLocationManager.shared.currentLocationCity = cityname
                 YILLocationManager.shared.currentLocationState = state!
